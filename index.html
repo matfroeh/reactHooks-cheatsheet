@@ -43,11 +43,14 @@
         <h1 class="text-2xl mb-5 font-bold">Hooks in React</h1>
 
         <div>
-          <h1 class="text-xl mt-5 mb-10">Key concept:</h1>
+          <h1 class="text-xl mb-2">Key concept:</h1>
+          <p>
+            Hooks allow the usage of React features inside of functional components
+          </p>
         </div>
 
         <div class="section">
-          <h2 class="text-xl">1. useState</h2>
+          <h2 class="text-xl mt-4">1. useState</h2>
         </div>
 
         <div class="section">
@@ -72,37 +75,38 @@
               wrong hook for the task
             </li>
             <li>typical use: fetching data with Fetch API or Axios</li>
-            <li>with <u>no dependency array</u>, useEffect is called after the first render and after every re-render of the component</li>
             <li>
-              with dependencies, useEffect is called after the first render and after every update of the dependencies
+              with <u>no dependency array</u>, useEffect is called after the
+              first render and after every re-render of the component
             </li>
-            <li> 
-              <u>empty</u> dependency array ( [ ] ): useEffect is called only once after the first render
+            <li>
+              with dependencies, useEffect is called after the first render and
+              after every update of the dependencies
+            </li>
+            <li>
+              <u>empty</u> dependency array ( [ ] ): useEffect is called only
+              once after the first render
             </li>
           </ul>
 
+          <p class="mt-4">Common mistakes:</p>
+          <ul class="list-disc list-inside mt-2">
+            <li>forgetting to return a cleanup function</li>
+            <li>
+              infinite loops:
+              <div class="language-javascript">
+                <pre><code>const [count, setCount] = useState(0); useEffect(() => {
+                setCount(count + 1); // Modifying the dependency 'count' inside
+                the effect }, [count]); // Dependency array includes 'count'</code></pre>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <div class="section">
           <h2 class="text-xl">3. useContext</h2>
         </div>
-
         <br />
-        <h1>#####BEISPIEL UM CODE ANZUZEIGEN########</h1>
-        <div class="language-javascript">
-          <pre><code>
-          import { Link } from &#39;react-router-dom&#39;;
-          
-          function Navbar() {
-            return (
-              &lt;nav&gt;
-                &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-                &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-              &lt;/nav&gt;
-            );
-          }
-                </code></pre>
-        </div>
       </div>
     </main>
   </body>
