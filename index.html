@@ -22,21 +22,6 @@
       import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
       mermaid.initialize({ startOnLoad: true });
     </script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "farbe-brand": "#F7F9FE", // Beispiel benutzerdefinierte Farbe
-            },
-          },
-        },
-        plugins: [daisyui], // Plugins außerhalb des Theme-Blocks
-        daisyui: {
-          themes: ["garden"], // Theme-Auswahl
-        },
-      };
-    </script>
     <style>
       /* Hier kann unsere TailwindCSS-Konfiguration hin. (Auch die obige tailwind.config laesst sich (fast) wie gewohnt ausbauen) */
     </style>
@@ -66,7 +51,33 @@
         </div>
 
         <div class="section">
-          <h2 class="text-xl">2. useEffect</h2>
+          <h2 class="text-xl mb-2">2. useEffect</h2>
+          <div class="language-javascript">
+            <pre><code>useEffect(() => {
+              // code to run when useEffect is triggered
+
+              return () => {
+                // clean up: code to run when the component is unmounted
+              }
+            }, [dependencies triggering the effect]);
+          </code></pre>
+          </div>
+          <p>
+            From official docs: synchronize a component with an
+            <u>external</u>(!) system.
+          </p>
+          <ul class="list-disc list-inside mt-2">
+            <li>
+              if there is no external system involved, useEffect might be the
+              wrong hook for the task
+            </li>
+            <li>typical use: fetching data with Fetch API or Axios</li>
+            <li>with empty dependencies, useEffect is called <u>after</u> the first render and after every re-render of the component (in other words, after the code inside the return value of the component has been executed)</li>
+            <li>
+              with dependencies, useEffect is called after the first render and after every update of the dependencies
+            </li>
+          </ul>
+
         </div>
 
         <div class="section">
