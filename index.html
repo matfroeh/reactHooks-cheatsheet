@@ -72,9 +72,12 @@
               wrong hook for the task
             </li>
             <li>typical use: fetching data with Fetch API or Axios</li>
-            <li>with empty dependencies, useEffect is called <u>after</u> the first render and after every re-render of the component (in other words, after the code inside the return value of the component has been executed)</li>
+            <li>with <u>no dependency array</u>, useEffect is called after the first render and after every re-render of the component</li>
             <li>
               with dependencies, useEffect is called after the first render and after every update of the dependencies
+            </li>
+            <li> 
+              <u>empty</u> dependency array ( [ ] ): useEffect is called only once after the first render
             </li>
           </ul>
 
